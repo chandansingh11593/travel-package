@@ -55,13 +55,17 @@ header {
     padding: 0.5rem 1rem;
     color: white;
     font-size: 21px;
-    @media screen and (max-width: 1080px) {
+    @media screen and (min-width: 921px) {
       flex: 0 25vw;
       padding: 1rem;
     }
-    @media screen and (max-width: 460px) {
-      flex: 0 1 35vw;
-      padding: 2vw;
+    @media screen and (max-width: 920px) {
+      flex: 0 1 40vw;
+      padding: 1rem;
+    }
+    @media screen and (max-width: 350px) {
+      flex: 0 1 55vw;
+      padding: 1rem;
     }
   }
   .navigation__menu {
@@ -110,11 +114,9 @@ header {
   height: 100%;
   left: 0;
   width: 100%;
-  background-image: linear-gradient(to bottom, #9bd1ea, #077cb2);
+  background-image: linear-gradient(to bottom, #1c506e, rgb(48, 148, 195));
   padding-top: 15vh;
   transition: background-image 1s ease;
-
-  // animation: menu__container__animate .51s ease-in;
   ul {
     position: relative;
     flex-direction: column;

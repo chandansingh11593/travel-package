@@ -1,0 +1,30 @@
+.slider__container {
+  position: relative;
+  display: flex;
+
+  .slider__image {
+    width: 100vw;
+    height: 40vh;
+    @media screen and (min-width: 1056px) {
+      height: 80vh;
+    }
+  }
+
+  .slider__link {
+    display: block;
+    position: absolute;
+    bottom: 2vh;
+    height: 1vw;
+    width: 1vw;
+    @media screen and (min-width: 1526px) {
+      height: 2vh;
+      width: 2vh;
+    }
+    background-color: white;
+    border-radius: 100%;
+    z-index: 999;
+    &.slider__link--active {
+      background-color: rgb(35, 215, 231);
+    }
+  }
+}

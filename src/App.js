@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { Home } from './components/home/home'
 import { About } from './components/about/about';
 import { Spinner } from './shared/spinner/spinner';
+import { Footer } from './shared/footer/footer';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/about" component={About} />
           <Redirect to="/home"></Redirect>
         </Switch>
+        <Footer></Footer>
       </Router>
       {/* <Spinner></Spinner> */}
     </div>

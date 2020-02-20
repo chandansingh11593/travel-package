@@ -119,7 +119,7 @@ export class Navbar extends React.Component {
 
     render() {
         return (
-            <div>
+            <>
                 <header>
                     <div className="brand__logo">
                         Travel Packer
@@ -127,7 +127,7 @@ export class Navbar extends React.Component {
                     {this.getNavigation()}
                 </header >
                 {this.getMobileMenu()}
-            </div>
+            </>
         );
     }
 }
