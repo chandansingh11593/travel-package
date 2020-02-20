@@ -1,0 +1,50 @@
+section {
+  position: fixed;
+  z-index: 9999;
+  top: 50%;
+  left: 45%;
+  background-color: transparent;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+section div.spinner__container {
+  display: flex;
+  position: relative;
+}
+
+section div.spinner__container div {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background-color: #29b6f6;
+  margin-left: 1rem;
+  /* position: absolute; */
+  
+}
+
+section div.spinner__container div:first-child{
+  animation: sliding .51s ease 0s 2;
+} 
+
+
+section div.spinner__container div:nth-child(2){
+  animation: sliding 1s ease 1s 2;
+} 
+
+
+section div.spinner__container div:nth-child(3){
+  animation: sliding 1s ease 2s 2;
+} 
+
+
+
+@keyframes sliding {
+  from {
+      /* left: 40%; */
+      opacity: 0;;
+  }
+  to {
+      /* left: 45%; */
+      opacity: 1;
+  }
+}
