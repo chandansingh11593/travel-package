@@ -39,7 +39,7 @@ export class Navbar extends React.Component {
     }
 
     handleMobileMenu() {
-        console.log(this.state.showMobileMenu);
+        // console.log(this.s.showMobileMenu);
         this.setState({ ...this.state, showMobileMenu: !this.state.showMobileMenu })
     }
 
@@ -67,10 +67,10 @@ export class Navbar extends React.Component {
                         <div className="navigation__menu navigation__menu--mobile">
                             <svg className="icon__burger" id="icon-burger" viewBox="0 0 24 24" fill="white"
                                 onClick={() => this.handleMobileMenu()}>
-                                <rect y="2" width="24" height="2" rx="1"></rect>
-                                <rect y="20" width="24" height="2" rx="1"></rect>
-                                <rect y="8" width="24" height="2" rx="1"></rect>
-                                <rect y="14" width="24" height="2" rx="1"></rect>
+                                <rect y="2" width="30" height="2" rx="1"></rect>
+                                <rect y="20" width="30" height="2" rx="1"></rect>
+                                <rect y="8" width="30" height="2" rx="1"></rect>
+                                <rect y="14" width="30" height="2" rx="1"></rect>
                             </svg>
 
                         </div>

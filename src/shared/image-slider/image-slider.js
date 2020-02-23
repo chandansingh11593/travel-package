@@ -12,7 +12,7 @@ export class ImageSlider extends React.Component {
     }
 
     tick() {
-        console.log(this.state);
+        // console.log(this.state);
         const { counter } = this.state;
 
         if (counter > 0) {
@@ -35,7 +35,7 @@ export class ImageSlider extends React.Component {
             const width = 1;
             const totalWidth = (width + shift) * images.length;
             const left = (100 - totalWidth) / 2;
-            console.log(totalWidth, left)
+            // console.log(totalWidth, left)
 
             if (counter === index) {
                 return (<div key={image + 'link'}

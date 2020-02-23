@@ -17,9 +17,9 @@ $secondary: #29b6f6;
   }
 }
 
-@mixin slidingInDelay($delay, $unit : s) {
-  $delayUnit : #{$delay}s;
-  animation: slidingIn 1s ease $delayUnit  alternate;
+@mixin slidingInDelay($delay, $unit: s) {
+  $delayUnit: #{$delay}s;
+  animation: slidingIn 1s ease $delayUnit alternate;
 }
 
 header {
@@ -29,8 +29,7 @@ header {
   background-color: darken($color: $secondary, $amount: 20);
   .icon--close {
     line-height: 1;
-    z-index: 999;
-    padding: 1rem;
+    z-index: 9999;
     width: 2rem;
     height: 2rem;
     text-align: center;
@@ -38,16 +37,14 @@ header {
     cursor: pointer;
     position: absolute;
     color: white;
-    right: 1rem;
+    right: 2vh;
+    top: 2vh;
     @media screen and (max-width: 1080px) {
       height: 3rem;
       width: 3rem;
     }
     @media screen and (max-width: 460px) {
       flex: 0 1 35vw;
-      padding: 2vw;
-      width: 1vh;
-      height: 1vh;
     }
   }
   .brand__logo {
@@ -74,10 +71,9 @@ header {
       position: relative;
       .icon__burger {
         position: absolute;
-        height: 5vh;
         width: 3vh;
         right: 2vh;
-        top: 0.5vh;
+        top: 2vh;
       }
     }
 
@@ -117,6 +113,8 @@ header {
   background-image: linear-gradient(to bottom, #1c506e, rgb(48, 148, 195));
   padding-top: 15vh;
   transition: background-image 1s ease;
+  z-index: 999;
+  opacity: 0.95;
   ul {
     position: relative;
     flex-direction: column;
@@ -128,14 +126,21 @@ header {
 
     li {
       text-align: center;
-      font-size: 21px;
-      // animation: slidingIn 1s linear .1s; 
-      background-color: transparent;  
-      &.active, &:hover {
+      font-size: 17px;
+      // animation: slidingIn 1s linear .1s;
+      background-color: transparent;
+      &.active,
+      &:hover {
         transition: all 1s ease 1s;
         transition-delay: 2s;
         opacity: 1;
-        background: lighten($color: ($primary), $amount: 10);
+        // font-size: 21px;
+        background: lighten(
+          $color: (
+            $primary
+          ),
+          $amount: 10
+        );
       }
       a {
         width: 100vw;
@@ -144,6 +149,9 @@ header {
         text-decoration: none;
         color: white;
         text-align: unset;
+        letter-spacing: 1px;
+        cursor: pointer;
+
         &:active {
           outline: 1px solid darken($color: $primary, $amount: 10);
         }
