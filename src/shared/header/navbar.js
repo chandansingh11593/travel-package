@@ -45,17 +45,17 @@ export class Navbar extends React.Component {
 
     getMobileMenu() {
         const { showMobileMenu, active, isMobileMode } = this.state;
-        if (showMobileMenu && isMobileMode) {
-            return (
-                <div className="menu__container menu__container--hide">
-                    <aside>
-                        {this.getMenuItems(active)}
-                    </aside>
-                </div>
-            );
-        } else {
-            return <></>
-        }
+        
+        const menu = 'menu__container '.concat((showMobileMenu && isMobileMode) ? '' : 'menu__container--hide');
+        // console.log(menu, showMobileMenu);
+        return (
+            <div className={menu}>
+                <aside>
+                    {this.getMenuItems(active)}
+                </aside>
+            </div>
+        );
+
     }
 
     getNavigation() {

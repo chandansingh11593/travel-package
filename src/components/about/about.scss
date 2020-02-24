@@ -1,0 +1,25 @@
+@import './../../shared/theme/variable.scss';
+.about__container {
+    text-align: center;
+    background-color: $primary;
+    min-height: 30vh;
+    color: white;
+    padding: 5vh;
+    .about__header {
+        min-height: 20vh;
+        display: block;
+        padding: 5vh;
+        h2 {
+            margin: 0;
+            font-size: 2rem;
+        }
+    }
+    .about__description {
+        width: 60%;
+        margin: auto;
+        margin-bottom: 5vh;
+        @media screen and (max-width: 950px) {
+            width: 90%;
+        }
+    }
+}

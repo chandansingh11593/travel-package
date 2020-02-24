@@ -1,5 +1,4 @@
-$primary: #276d96;
-$secondary: #29b6f6;
+@import "./../theme/variable.scss";
 
 * {
   box-sizing: border-box;
@@ -26,6 +25,7 @@ header {
   display: flex;
   flex-direction: row;
   width: 100%;
+
   background-color: darken($color: $secondary, $amount: 20);
   .icon--close {
     line-height: 1;
@@ -49,12 +49,12 @@ header {
   }
   .brand__logo {
     flex: 0 20vw;
-    padding: 0.5rem 1rem;
     color: white;
     font-size: 21px;
     @media screen and (min-width: 921px) {
       flex: 0 25vw;
-      padding: 1rem;
+      margin: 10px;
+      // padding: 1rem;
     }
     @media screen and (max-width: 920px) {
       flex: 0 1 40vw;
@@ -90,7 +90,9 @@ header {
         }
         flex: 0 20vw;
         text-align: center;
-        &.active,
+        &.active {
+          border-bottom: 5px solid darken($color: $primary, $amount: 10);
+        }
         &:hover {
           background-color: $primary;
         }
@@ -112,9 +114,13 @@ header {
   width: 100%;
   background-image: linear-gradient(to bottom, #1c506e, rgb(48, 148, 195));
   padding-top: 15vh;
-  transition: background-image 1s ease;
+  transition: background-image 5s ease;
   z-index: 999;
   opacity: 0.95;
+  animation: menu__container__animate 1s;
+  &.menu__container--hide {
+    display: none;
+  }
   ul {
     position: relative;
     flex-direction: column;
@@ -127,14 +133,12 @@ header {
     li {
       text-align: center;
       font-size: 17px;
-      // animation: slidingIn 1s linear .1s;
       background-color: transparent;
       &.active,
       &:hover {
         transition: all 1s ease 1s;
         transition-delay: 2s;
         opacity: 1;
-        // font-size: 21px;
         background: lighten(
           $color: (
             $primary
@@ -151,7 +155,6 @@ header {
         text-align: unset;
         letter-spacing: 1px;
         cursor: pointer;
-
         &:active {
           outline: 1px solid darken($color: $primary, $amount: 10);
         }
@@ -161,13 +164,27 @@ header {
 }
 
 @keyframes menu__container__animate {
-  from {
-    // background-image: linear-gradient(to bottom, transparent, $primary);
-    background-image: linear-gradient(to bottom, #9bd1ea, transparent);
+  0% {
+    bottom: -30vh;
   }
 
-  to {
-    // background-image: linear-gradient(to bottom, $primary, $secondary);
-    background-image: linear-gradient(to bottom, #9bd1ea, #077cb2);
+  30% {
+    bottom: 0;
+  }
+
+  60% {
+    bottom: -5vh;
+  }
+
+  80% {
+    bottom: 0;
+  }
+
+  90% {
+    bottom: -1vh;
+  }
+
+  100% {
+    bottom: 0vh;
   }
 }
