@@ -1,5 +1,39 @@
 $primary: #276d96;
 $secondary: #29b6f6;
-$danger : #cc3636;
-$default : #bac5c5;
-$primary-bg : lighten($color: $primary, $amount: 60)
+$danger: #cc3636;
+$default: #bac5c5;
+$primary-light: lighten(
+  $color: $primary,
+  $amount: 60
+);
+$danger-light: lighten(
+  $color: $danger,
+  $amount: 60
+);
+
+$theme-light: (
+  primary:
+    darken(
+      $color: $primary-light,
+      $amount: 10
+    ),
+  danger:
+    darken(
+      $color: $danger-light,
+      $amount: 10
+    )
+);
+
+$theme-dark: (
+  primary:
+    darken(
+      $color: $primary,
+      $amount: 10
+    ),
+  danger:
+    darken(
+      $color: $danger,
+      $amount: 10
+    )
+);
+

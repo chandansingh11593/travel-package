@@ -3,6 +3,7 @@
 }
 
 @mixin highlight($color) {
+  transition: box-shadow .1s .1s;
   box-shadow: 1px 0px 8px 0px $color, 4px 0px 1px 0px lighten($color: $color, $amount: 10) inset;
   border: 0;
   outline: none;

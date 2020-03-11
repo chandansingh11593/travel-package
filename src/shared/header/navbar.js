@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+
+import { Link, withRouter } from 'react-router-dom'
 import './navbar.scss';
 
-export class Navbar extends React.Component {
+class Navbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -10,13 +11,7 @@ export class Navbar extends React.Component {
             active: 'home',
             isMobileMode: this.isMobileMode(window.innerWidth),
             showMobileMenu: false
-        }
-        this.handleNavigationClick.bind(this);
-    }
-
-    handleNavigationClick(route) {
-        this.setState({ ...this.state, ...{ active: route, showMobileMenu: false } });
-
+        };
     }
 
     isMobileMode(width) {
@@ -39,15 +34,13 @@ export class Navbar extends React.Component {
     }
 
     handleMobileMenu() {
-        // console.log(this.s.showMobileMenu);
         this.setState({ ...this.state, showMobileMenu: !this.state.showMobileMenu })
     }
 
     getMobileMenu() {
         const { showMobileMenu, active, isMobileMode } = this.state;
-        
+
         const menu = 'menu__container '.concat((showMobileMenu && isMobileMode) ? '' : 'menu__container--hide');
-        // console.log(menu, showMobileMenu);
         return (
             <div className={menu}>
                 <aside>
@@ -92,29 +85,25 @@ export class Navbar extends React.Component {
 
 
     getMenuItems(active) {
+        const { pathname } = this.props.location;
+        const paths = [
+            { route: '/home', label: 'Home' },
+            { route: '/about-us', label: 'About us' },
+            { route: '/international', label: 'International' },
+            { route: '/domestic', label: 'Domestic' },
+            { route: '/contact-us', label: 'Contact us' },
+            { route: '/inquiryus', label: 'Inquiry' }
+        ];
+        const list = paths.map((path, index) =>
+            <li className={pathname === path.route ? 'active' : ''} key={index}>
+                <Link to={path.route}>{path.label}</Link >
+            </li>);
+
         return (
             <ul>
-                <li className={active === 'home' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('home')} to="/home">Home</Link>
-                </li>
-                <li className={active === 'about' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('about')} to="/about">About us</Link>
-                </li>
-                <li className={active === 'international' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('international')} to="/international">International</Link >
-                </li>
-                <li className={active === 'domestic' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('domestic')} to="/domestic">Domestic</Link >
-                </li>
-                <li className={active === 'contact-us' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('contact-us')} to="/contact-us">Contact us</Link >
-                </li>
-                <li className={active === 'inquiry' ? 'active' : ''}>
-                    <Link onClick={() => this.handleNavigationClick('inquiry')} to="/inquiry">Inquiry</Link >
-                </li>
+                {list}
             </ul>
-
-        )
+        );
     }
 
     render() {
@@ -131,3 +120,5 @@ export class Navbar extends React.Component {
         );
     }
 }
+
+export default withRouter(Navbar);

@@ -2,17 +2,25 @@ import React from 'react';
 import './image-slider.scss'
 
 export class ImageSlider extends React.Component {
+    subscription;
     constructor(props) {
         super(props);
         this.state = {
             counter: 0,
             defaultCounter: this.props.images.length - 1
         }
-        setInterval(this.tick.bind(this), 10000);
+    }
+
+    componentDidMount() {
+        this.subscription = setInterval(this.tick.bind(this), 10000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.subscription);
     }
 
     tick() {
-        // console.log(this.state);
+
         const { counter } = this.state;
 
         if (counter > 0) {
@@ -35,7 +43,6 @@ export class ImageSlider extends React.Component {
             const width = 1;
             const totalWidth = (width + shift) * images.length;
             const left = (100 - totalWidth) / 2;
-            // console.log(totalWidth, left)
 
             if (counter === index) {
                 return (<div key={image + 'link'}
@@ -47,7 +54,7 @@ export class ImageSlider extends React.Component {
                     <div key={image + 'link'}
                         className="slider__link"
                         style={{ transform: translateLink, left: `${left}vw` }}
-                        onClick={()=> this.setActiveImage(index)}></div>);
+                        onClick={() => this.setActiveImage(index)}></div>);
             }
         })
     }
@@ -60,7 +67,7 @@ export class ImageSlider extends React.Component {
             <div className="slider__container">
                 <img className="slider__image" key={'images-slider'} src={images[counter]} alt="" style={{ margin: 'auto' }} />
                 {/* <div className="slider__link__wrapper"> */}
-                    {this.getImageLink()}
+                {this.getImageLink()}
                 {/* </div> */}
             </div>
         );

@@ -4,13 +4,13 @@
   width: 100%;
   height: 100%;
   margin: auto;
-  padding: 5rem;
+  padding: 2rem;
   color: $primary;
   text-transform: capitalize;
   font-family: Helvetica, sans-serif;
   letter-spacing: 1px;
   display: block;
-  background-color: $primary-bg;
+  background-color: $primary-light;
 
   .contact__form {
     margin: auto;
@@ -28,19 +28,15 @@
       border-bottom: 2px solid $primary;
       margin-bottom: 3rem;
     }
-
-    button {
-      margin-top: 1rem;
-    }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     padding: 1rem;
     .contact__form {
       width: 100%;
     }
   }
-  @media screen and (min-width: 501px) and (max-width: 900px) {
+  @media screen and (min-width: 601px) and (max-width: 900px) {
     padding: 2rem;
     .contact__form {
       width: 70%;

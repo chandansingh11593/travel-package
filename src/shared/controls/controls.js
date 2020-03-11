@@ -7,13 +7,23 @@ export class Input extends Component {
 
     render() {
 
-        let { name, label, type, color } = this.props;
-        console.log(this.props)
+        let { name, label, type, color, placeholder } = this.props;
         color = color ? color : 'primary';
+        let control = null;
+        switch (type) {
+            case InputType.text:
+                control = <input name={name} type={type} placeholder={placeholder} ></input>
+                break;
+            case InputType.textarea:
+                control = <textarea rows="4" name={name} type={type} placeholder={placeholder}></textarea>
+                break;
+            default:
+                break;
+        }
         return (
             <div className={'input__control ' + color}>
                 <label>{label}</label>
-                <input name={name} type={type} ></input>
+                {control}
             </div>
         )
     }
@@ -32,5 +42,6 @@ export class Button extends Component {
 export const InputType = {
     'text': 'text',
     'checkbox': 'checkbox',
-    'number': 'number'
+    'number': 'number',
+    'textarea': 'textarea'
 }

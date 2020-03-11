@@ -8,22 +8,30 @@ export class Contact extends React.Component {
         type: InputType.text,
         label: 'email Id',
         color: '',
+        placeholder: 'email@gmail.com'
     },
     {
         name: 'number',
         type: InputType.text,
         label: 'Contact Number',
         color: '',
+        placeholder: '+91-9045-681-706'
+    },
+    {
+        name: 'number',
+        type: InputType.textarea,
+        label: 'Query',
+        color: '',
+        placeholder: 'Please provide description here...'
     }]
 
     getFormControls() {
         const controls = this.controls.map((control, index) => {
-            let { name, label, type, color } = control;
+            let { name, label, type, color, placeholder } = control;
             return (
-                <Input name={name} type={type} label={label} key={index} color={color}  ></Input>
+                <Input name={name} type={type} label={label} key={index} color={color} placeholder={placeholder} ></Input>
             )
         });
-        console.log(controls);
         return (
             <>
                 {controls}
@@ -33,7 +41,7 @@ export class Contact extends React.Component {
     }
 
     onSubmitForm($event) {
-        console.log($event);
+        // console.log($event);
     }
 
     render() {
@@ -45,7 +53,7 @@ export class Contact extends React.Component {
                     <div className="contact__form__controls">
                         {this.getFormControls()}
                     </div>
-                    <Button type={'submit'} name={'submit button'} label={'Send Query'}></Button>
+                    <Button className={'primary'} type={'submit'} name={'submit button'} label={'Send Query'}></Button>
                 </form>
             </div>
         )
