@@ -1,30 +1,34 @@
+@import "./../theme/variable.scss";
+
 .slider__container {
   position: relative;
+  padding: 1rem;
   display: flex;
-
   .slider__image {
-    width: 100vw;
-    height: 40vh;
+    width: 80vw;
+    height: 30vh;
     @media screen and (min-width: 1056px) {
-      height: 80vh;
+      height: 60vh;
     }
   }
 
   .slider__link {
     display: block;
     position: absolute;
-    bottom: 2vh;
+    bottom: 4vh;
     height: 1vw;
     width: 1vw;
+    background-color: white;
+    border: 2px solid $primary;
+    border-radius: 100%;
+    z-index: 9;
     @media screen and (min-width: 1526px) {
       height: 2vh;
       width: 2vh;
     }
-    background-color: white;
-    border-radius: 100%;
-    z-index: 9;
     &.slider__link--active {
-      background-color: rgb(35, 215, 231);
+      background-color: $primary;
+      border: 2px solid white;
     }
   }
 }

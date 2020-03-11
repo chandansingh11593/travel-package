@@ -1,0 +1,13 @@
+@import './shared/theme/variable.scss';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+main {
+    display: block;
+    min-height: 75%;
+    background-color: $primary-bg;
+}

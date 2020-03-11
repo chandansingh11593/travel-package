@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { Navbar } from './shared/header/navbar';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { Home } from './components/home/home'
 import { About } from './components/about/about';
-// import { Spinner } from './shared/spinner/spinner';
 import { Footer } from './shared/footer/footer';
+import { Contact } from './components/contact/contact';
 
 function App() {
   return (
@@ -13,14 +13,16 @@ function App() {
       <Router>
         <Navbar>
         </Navbar>
-        <Switch>
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/about" component={About} />
-          <Redirect to="/home"></Redirect>
-        </Switch>
+        <main>
+          <Switch>
+            <Route exact path="/home" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/contact-us" component={Contact} />
+            <Redirect to="/home"></Redirect>
+          </Switch>
+        </main>
         <Footer></Footer>
       </Router>
-      {/* <Spinner></Spinner> */}
     </div>
   );
 }

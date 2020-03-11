@@ -1,0 +1,64 @@
+@import "./../theme/variable.scss";
+@import "./../theme/animation.scss";
+
+$input-status: (
+  primary: $primary,
+  error: $danger
+);
+
+.input__control {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 4rem;
+  margin: auto;
+  margin-bottom: 2vh;
+  @each $key, $value in $input-status {
+    &.#{$key} {
+      color: $value;
+      label {
+        height: auto;
+        width: 80%;
+        padding-left: 0.51rem;
+        text-transform: capitalize;
+        margin-bottom: 1vh;
+        font-weight: 500;
+        color: darken($color: $value, $amount: 10);
+      }
+
+      input {
+        width: auto;
+        padding-top: 1vh;
+        padding-bottom: 1vh;
+        padding-left: 1vw;
+        border-radius: 4px;
+        box-shadow: none;
+        font-size: 2vh;
+        @include input-focus(0.5, 0.5);
+        box-shadow: 1px 1px 2px 1px #{$value};
+        border: 0;
+        &:active,
+        &:focus {
+          @include highlight($value);
+        }
+      }
+    }
+  }
+}
+
+button {
+  height: 2rem;
+  width: 7rem;
+  margin: auto;
+  border: 0;
+  @media screen and (max-width: 750px) {
+    width: auto;
+  }
+  @each $key, $value in $input-status {
+    &.#{$key} {
+      color: white;
+      $lighten: lighten($value, 20);
+      background-image: linear-gradient($value, $lighten);
+    }
+  }
+}

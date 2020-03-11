@@ -9,7 +9,6 @@ export class Home extends React.Component {
         'images/landscape-photography-of-mountains-and-trees-during-daylight-2314983.jpg'
     ];
     render() {
-        // console.log(process.env, process.env.PUBLIC_URL, this.images);
         return (
             <div className="container">
                 <ImageSlider images={this.images}></ImageSlider>

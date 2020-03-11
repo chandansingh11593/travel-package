@@ -25,7 +25,6 @@ header {
   display: flex;
   flex-direction: row;
   width: 100%;
-
   background-color: darken($color: $secondary, $amount: 20);
   .icon--close {
     line-height: 1;
@@ -74,6 +73,7 @@ header {
         width: 3vh;
         right: 2vh;
         top: 2vh;
+        cursor: pointer;
       }
     }
 
@@ -174,14 +174,6 @@ header {
 
   60% {
     bottom: -5vh;
-  }
-
-  80% {
-    bottom: 0;
-  }
-
-  90% {
-    bottom: -1vh;
   }
 
   100% {
