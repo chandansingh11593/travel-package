@@ -3,8 +3,69 @@
 }
 
 @mixin highlight($color) {
-  transition: box-shadow .1s .1s;
+  transition: box-shadow 0.1s 0.1s;
   box-shadow: 1px 0px 8px 0px $color, 4px 0px 1px 0px lighten($color: $color, $amount: 10) inset;
   border: 0;
   outline: none;
+}
+
+@mixin hightlight-normal($color) {
+  transition: box-shadow 0.1s 0.1s;
+  box-shadow: 0px 0px 3px 1px $color;
+  border: 0;
+  outline: none;
+  &:hover,
+  &:active {
+    transition: box-shadow 0.1s 0.1s;
+    box-shadow: -1px 0px 13px 0px $color, 0px 0px 1px 1px lighten($color: $color, $amount: 10) inset;
+  }
+}
+
+@mixin slidingInDelay($delay, $unit: s) {
+  $delayUnit: #{$delay}s;
+  animation: slidingIn 1s ease $delayUnit alternate;
+}
+
+@keyframes slidingIn {
+  0% {
+    transform: translateY(250px);
+    display: none;
+  }
+
+  100% {
+    transform: translateY(0);
+    display: block;
+  }
+}
+
+@mixin listitemhover {
+  animation: list-animate 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+@keyframes list-animate {
+  0% {
+    transform: translateX(2%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes menu__container__animate {
+  0% {
+    bottom: -30vh;
+  }
+
+  30% {
+    bottom: 0;
+  }
+
+  60% {
+    bottom: -5vh;
+  }
+
+  100% {
+    bottom: 0vh;
+  }
 }

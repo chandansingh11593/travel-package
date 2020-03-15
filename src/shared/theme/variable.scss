@@ -1,26 +1,31 @@
-$primary: #276d96;
+$primary: #0e771f;
 $secondary: #29b6f6;
-$danger: #cc3636;
-$default: #bac5c5;
+$danger: #e00e0e;
+$default: #707575;
 $primary-light: lighten(
   $color: $primary,
-  $amount: 60
+  $amount: 75
 );
 $danger-light: lighten(
   $color: $danger,
-  $amount: 60
+  $amount: 75
 );
 
 $theme-light: (
   primary:
     darken(
       $color: $primary-light,
-      $amount: 10
+      $amount: 20
     ),
   danger:
     darken(
       $color: $danger-light,
-      $amount: 10
+      $amount: 20
+    ),
+  default:
+    lighten(
+      $color: $default,
+      $amount: 20
     )
 );
 
@@ -34,6 +39,16 @@ $theme-dark: (
     darken(
       $color: $danger,
       $amount: 10
+    ),
+  default:
+    darken(
+      $color: $default,
+      $amount: 20
     )
 );
 
+$statuses: (
+  primary: $primary,
+  danger: $danger,
+  default: $default
+);

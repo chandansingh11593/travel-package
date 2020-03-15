@@ -1,0 +1,13 @@
+@import "./../theme/variable.scss";
+@import "./../theme/animation.scss";
+
+div.card {
+  width: inherit;
+  height: inherit;
+  padding: 1rem;
+  @each $key, $status in $statuses {
+    &.#{$key} {
+      @include hightlight-normal($status);
+    }
+  }
+}

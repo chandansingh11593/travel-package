@@ -3,16 +3,24 @@ import React, { Component } from 'react'
 import './controls.scss';
 
 export class Input extends Component {
-
+    handleControlChange($event, name) {
+        this.props.onInput(name, $event.currentTarget.value);
+    }
 
     render() {
 
-        let { name, label, type, color, placeholder } = this.props;
-        color = color ? color : 'primary';
+        let { name, label, type, color, placeholder, value } = this.props;
+        color = color ? color : 'default';
         let control = null;
         switch (type) {
             case InputType.text:
-                control = <input name={name} type={type} placeholder={placeholder} ></input>
+                control =
+                    <input name={name}
+                        value={value}
+                        type={type}
+                        placeholder={placeholder}
+                        onBlur={() => this.props.onFocusOut(name)}
+                        onChange={($event) => this.props.onInput(name, $event.currentTarget.value)} ></input>
                 break;
             case InputType.textarea:
                 control = <textarea rows="4" name={name} type={type} placeholder={placeholder}></textarea>
@@ -31,7 +39,7 @@ export class Input extends Component {
 
 export class Button extends Component {
     render() {
-        let { name, label, type, color = 'primary' } = this.props;
+        let { name, label, type, color = 'default' } = this.props;
 
         return (
             <button name={name} className={color} type={type}>{label}</button>

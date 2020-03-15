@@ -1,5 +1,6 @@
+@import "./../theme/variable.scss";
 footer {
-    height: 20vh;
+    height: 10vh;
     display: block;
-    background-color: #077cb2;
+    background-color: $primary;
 }

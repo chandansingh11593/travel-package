@@ -1,18 +1,13 @@
 @import "./../theme/variable.scss";
 @import "./../theme/animation.scss";
 
-$input-status: (
-  primary: $primary,
-  danger: $danger
-);
-
 .input__control {
   display: flex;
   flex-direction: column;
   position: relative;
   margin: auto;
   margin-bottom: 5vh;
-  @each $key, $value in $input-status {
+  @each $key, $value in $statuses {
     $color: map-get(
       $map: $theme-light,
       $key: $key
@@ -32,7 +27,6 @@ $input-status: (
         text-transform: capitalize;
         margin-bottom: 1vh;
         font-weight: 500;
-        color: $dark-color;
       }
 
       textarea {
@@ -40,6 +34,7 @@ $input-status: (
         height: auto;
         position: relative;
         width: auto;
+        resize: inherit;
         &::after {
           content: "";
           position: absolute;
@@ -58,8 +53,8 @@ $input-status: (
         border-radius: 4px;
         box-shadow: none;
         font-size: 2vh;
-        color: $value;
         border: 0.5px solid $color;
+        color: $dark-color;
         @include input-focus(0.5, 0.5);
 
         &:active,
@@ -79,13 +74,12 @@ button {
   height: 2rem;
   width: 10rem;
   margin: auto;
-  // margin-righ: 0;
   border: 0;
   border-radius: 5px;
   @media screen and (max-width: 750px) {
     width: auto;
   }
-  @each $key, $value in $input-status {
+  @each $key, $value in $statuses {
     &.#{$key} {
       color: white;
       $lighten: map-get(
@@ -97,8 +91,6 @@ button {
       :active {
         @include highlight($value);
       }
-
-      
     }
   }
 }

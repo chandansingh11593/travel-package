@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
+import { globalRoutes } from './../../shared/constants/global.constants'
 import './navbar.scss';
 
 class Navbar extends React.Component {
@@ -20,7 +21,6 @@ class Navbar extends React.Component {
 
     handleHeaderWidthChange($event) {
         const { innerWidth } = $event.currentTarget;
-        // const { } = this.isMobileMode(innerWidth);
         this.setState({ ...this.state, isMobileMode: this.isMobileMode(innerWidth) });
     }
 
@@ -39,8 +39,9 @@ class Navbar extends React.Component {
 
     getMobileMenu() {
         const { showMobileMenu, active, isMobileMode } = this.state;
+        const menu = 'menu__container '.concat((showMobileMenu && isMobileMode)
+            ? '' : 'menu__container--hide');
 
-        const menu = 'menu__container '.concat((showMobileMenu && isMobileMode) ? '' : 'menu__container--hide');
         return (
             <div className={menu}>
                 <aside>
@@ -48,7 +49,6 @@ class Navbar extends React.Component {
                 </aside>
             </div>
         );
-
     }
 
     getNavigation() {
@@ -56,19 +56,15 @@ class Navbar extends React.Component {
         if (isMobileMode) {
             if (!showMobileMenu) {
                 return (
-                    <>
-                        <div className="navigation__menu navigation__menu--mobile">
-                            <svg className="icon__burger" id="icon-burger" viewBox="0 0 24 24" fill="white"
-                                onClick={() => this.handleMobileMenu()}>
-                                <rect y="2" width="30" height="2" rx="1"></rect>
-                                <rect y="20" width="30" height="2" rx="1"></rect>
-                                <rect y="8" width="30" height="2" rx="1"></rect>
-                                <rect y="14" width="30" height="2" rx="1"></rect>
-                            </svg>
-
-                        </div>
-
-                    </>
+                    <div className="navigation__menu navigation__menu--mobile">
+                        <svg className="icon__burger" id="icon-burger" viewBox="0 0 24 24" fill="white"
+                            onClick={() => this.handleMobileMenu()}>
+                            <rect y="2" width="30" height="2" rx="1"></rect>
+                            <rect y="20" width="30" height="2" rx="1"></rect>
+                            <rect y="8" width="30" height="2" rx="1"></rect>
+                            <rect y="14" width="30" height="2" rx="1"></rect>
+                        </svg>
+                    </div>
                 );
             } else {
                 return <div className="icon--close" onClick={() => this.handleMobileMenu()}> X </div>
@@ -77,7 +73,9 @@ class Navbar extends React.Component {
         } else {
             return (
                 <nav className="navigation__menu">
-                    {this.getMenuItems(active)}
+                    <ul>
+                        {this.getMenuItems(active)}
+                    </ul>
                 </nav>
             );
         }
@@ -86,23 +84,16 @@ class Navbar extends React.Component {
 
     getMenuItems(active) {
         const { pathname } = this.props.location;
-        const paths = [
-            { route: '/home', label: 'Home' },
-            { route: '/about-us', label: 'About us' },
-            { route: '/international', label: 'International' },
-            { route: '/domestic', label: 'Domestic' },
-            { route: '/contact-us', label: 'Contact us' },
-            { route: '/inquiryus', label: 'Inquiry' }
-        ];
+        const paths = globalRoutes;
         const list = paths.map((path, index) =>
             <li className={pathname === path.route ? 'active' : ''} key={index}>
                 <Link to={path.route}>{path.label}</Link >
             </li>);
 
         return (
-            <ul>
+            <>
                 {list}
-            </ul>
+            </>
         );
     }
 
